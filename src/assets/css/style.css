@@ -81,3 +81,17 @@ input{border: 1px solid transparent !important;}
     transition: opacity 0.3s 0.3s ease; 
     opacity: 0;
 }
+
+/* Navigation */
+.navbar {padding: 0;}
+a.navbar-brand {
+    margin: 0;
+    padding: 0;
+}
+a.navbar-brand img {
+    width: 80px;
+}
+li.nav-item a {
+    color: #fff;
+    margin-right: 15px;
+}

@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react';
+import { Navigation } from '../../components/Navigation/Navigation';
 
 const Header = () => {
     return (
-        <Fragment className="header-section">
-            <div className="container">
-                <h2>Heqader Section</h2>
-            </div>
+        <Fragment>
+            <Navigation />
         </Fragment>
     )
 };
