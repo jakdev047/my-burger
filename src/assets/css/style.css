@@ -95,3 +95,12 @@ li.nav-item a {
     color: #fff;
     margin-right: 15px;
 }
+
+/* ingredient */
+.ingredient {
+    text-align: center;
+    margin: 5px;
+}
+.ingredient img {
+    width: 80%;
+}
