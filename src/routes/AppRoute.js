@@ -6,6 +6,7 @@ import Home from '../pages/Home';
 import About from '../pages/About';
 import NotFound from '../pages/NotFound';
 import Header from '../layer/Header/Header';
+import Footer from '../layer/Footer.js/Footer';
 
 
 class AppRoute extends Component {
@@ -21,6 +22,8 @@ class AppRoute extends Component {
           <Route exact path='/about' component={About}/>
           <Route path='*' component={NotFound}/>
         </Switch>
+
+        <Footer />
 
       </Fragment>
     )
