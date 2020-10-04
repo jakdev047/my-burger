@@ -13,8 +13,8 @@ const BuildControl = props => {
             <div>
                 <p className="my-2">{props.label}</p>
             </div>
-            <button className="btn btn-danger mr-3">Less</button>
-            <button className="btn btn-success">More</button>
+            <button className="btn btn-danger mr-3" onClick={()=>props.removed(props.type)}>Less</button>
+            <button className="btn btn-success" onClick={()=>props.added(props.type)}>More</button>
             <hr/>
         </div>
     );
@@ -30,7 +30,7 @@ const Controls = props => {
                 <CardBody style={{background:'#eee'}}>
                     {
                         controls.map(item=>{
-                            return <BuildControl key={Math.random()} label={item.label} type={item.type} />
+                            return <BuildControl key={Math.random()} label={item.label} type={item.type} added={props.ingredientAdded} removed={props.ingredientRemoved}/>
                         })
                     }
                 </CardBody>

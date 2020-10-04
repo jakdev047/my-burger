@@ -10,6 +10,34 @@ class BurgerBuilder extends Component {
             {type: 'meat', amount:0},
         ]
     }
+
+    addIngredientHandle = type => {
+        const ingredients = [...this.state.ingredients];
+
+        for( let item of ingredients) {
+            if( item.type === type ) item.amount++;
+        }
+
+        this.setState({
+            ingredients
+        })
+    }
+
+    removeIngredientHandle = type => {
+        const ingredients = [...this.state.ingredients];
+
+        for( let item of ingredients) {
+            if( item.type === type ) {
+                if(item.amount <= 0) return;
+                item.amount--;
+            };
+        }
+
+        this.setState({
+            ingredients
+        })
+    }
+
     render() {
         return (
             <Fragment>
@@ -19,7 +47,10 @@ class BurgerBuilder extends Component {
                             <Burger ingredients={this.state.ingredients}/>
                         </div>
                         <div className="col-lg-6">
-                            <Controls />
+                            <Controls 
+                                ingredientAdded = {this.addIngredientHandle}
+                                ingredientRemoved = {this.removeIngredientHandle}
+                            />
                         </div>
                     </div>
                 </div>
