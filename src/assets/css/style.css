@@ -104,3 +104,24 @@ li.nav-item a {
 .ingredient img {
     width: 80%;
 }
+
+/* burger */
+.burger {
+    width: 100%;
+    margin: auto;
+    height: 400px;
+    overflow-y: scroll;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.burger::-webkit-scrollbar {
+    display: none;
+}
+
+/* hide scrollber for IE,Edge & Firefox */
+.burger {
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none; /* Firefox */
+}
