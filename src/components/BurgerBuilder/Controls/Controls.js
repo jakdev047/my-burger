@@ -35,7 +35,7 @@ const Controls = props => {
                     }
                 </CardBody>
                 <CardFooter style={{background:'#000'}}>
-                    <h5 style={{color:'#fff'}}>Price: 0.00 BDT </h5>
+                    <h5 style={{color:'#fff'}}>Price: {props.price} BDT </h5>
                 </CardFooter>
             </Card>
         </div>
