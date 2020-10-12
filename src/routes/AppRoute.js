@@ -7,6 +7,8 @@ import About from '../pages/About';
 import NotFound from '../pages/NotFound';
 import Header from '../layer/Header/Header';
 import Footer from '../layer/Footer.js/Footer';
+import Orders from '../pages/Orders';
+import Checkout from '../pages/Checkout';
 
 
 class AppRoute extends Component {
@@ -20,6 +22,8 @@ class AppRoute extends Component {
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path='/about' component={About}/>
+          <Route exact path='/orders' component={Orders}/>
+          <Route exact path='/checkout' component={Checkout}/>
           <Route path='*' component={NotFound}/>
         </Switch>
 

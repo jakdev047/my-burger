@@ -96,6 +96,10 @@ li.nav-item a {
     margin-right: 15px;
 }
 
+li.nav-item a.active {
+    color: #eb1b33;
+}
+
 /* ingredient */
 .ingredient {
     text-align: center;

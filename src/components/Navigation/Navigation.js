@@ -19,8 +19,10 @@ export const Navigation = () => {
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="ml-auto" navbar>
-                        <NavItem><NavLink to="/">Home</NavLink></NavItem>
-                        <NavItem><NavLink to="/about">About</NavLink></NavItem>
+                        <NavItem><NavLink exact  to="/">Home</NavLink></NavItem>
+                        <NavItem><NavLink exact  to="/orders">Orders</NavLink></NavItem>
+                        <NavItem><NavLink exact  to="/checkout">Checkout</NavLink></NavItem>
+                        <NavItem><NavLink exact  to="/about">About</NavLink></NavItem>
                     </Nav>
                 </Collapse>
             </div>
