@@ -75,7 +75,7 @@ class BurgerBuilder extends Component {
         })
     }
 
-    handleCheckout = props => {
+    handleCheckout = () => {
         this.props.history.push("/checkout");
     }
 
