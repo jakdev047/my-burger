@@ -1,4 +1,4 @@
-import { ADD_INGREDIENT, REMOVE_INGREDIENT } from "../actions/types";
+import { ADD_INGREDIENT, REMOVE_INGREDIENT, UPDATE_PURCHASABLE } from "../actions/types";
 
 const ingredientsPrice = {
     salad: 20,
@@ -40,6 +40,17 @@ const reducers = (state = initialState, action) => {
                 ...state,
                 ingredients: ingredients,
                 totalPrice: state.totalPrice - ingredientsPrice[action.payload],
+            }
+        };
+
+        case UPDATE_PURCHASABLE: {
+            const sum = state.ingredients.reduce((sum,element)=>{
+                return sum += element.amount;
+            },0);
+
+            return {
+                ...state,
+                purchaseable: sum > 0
             }
         };
 

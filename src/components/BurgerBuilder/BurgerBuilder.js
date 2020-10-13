@@ -12,25 +12,17 @@ class BurgerBuilder extends Component {
     }
     addIngredientHandle = type => {
         this.props.addIngredient(type);
+        this.props.updatePurchasable();
     }
 
     removeIngredientHandle = type => {
         this.props.removeIngredient(type);
+        this.props.updatePurchasable();
     }
 
     toggleModal = () => {
         this.setState({
             modalOpen: !this.state.modalOpen
-        })
-    }
-
-    updatePurchaseable = ingredients => {
-        const sum = ingredients.reduce((sum,element)=>{
-            return sum += element.amount;
-        },0);
-
-        this.setState({
-            purchaseable: sum > 0
         })
     }
 
@@ -86,7 +78,7 @@ const mapDispatchToProps = dispatch => {
     return {
         addIngredient: ingredientType => dispatch(addIngredient(ingredientType)),
         removeIngredient: ingredientType => dispatch(removeIngredient(ingredientType)),
-        updatePurchasable: () => dispatch(updatePurchasable)
+        updatePurchasable: () => dispatch(updatePurchasable())
     }
 }
 
