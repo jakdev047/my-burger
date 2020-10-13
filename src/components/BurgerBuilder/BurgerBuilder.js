@@ -15,23 +15,7 @@ class BurgerBuilder extends Component {
     }
 
     removeIngredientHandle = type => {
-        // const ingredients = [...this.state.ingredients];
-
-        // const newPrice = this.state.totalPrice - ingredientsPrice[type];
-
-        // for( let item of ingredients) {
-        //     if( item.type === type ) {
-        //         if(item.amount <= 0) return;
-        //         item.amount--;
-        //     };
-        // }
-
-        // this.setState({
-        //     ingredients,
-        //     totalPrice: newPrice
-        // })
-
-        // this.updatePurchaseable(ingredients);
+        this.props.removeIngredient(type);
     }
 
     toggleModal = () => {

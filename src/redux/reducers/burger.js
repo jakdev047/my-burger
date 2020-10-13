@@ -1,4 +1,4 @@
-import { ADD_INGREDIENT } from "../actions/types";
+import { ADD_INGREDIENT, REMOVE_INGREDIENT } from "../actions/types";
 
 const ingredientsPrice = {
     salad: 20,
@@ -26,6 +26,20 @@ const reducers = (state = initialState, action) => {
                 ...state,
                 ingredients: ingredients,
                 totalPrice: state.totalPrice + ingredientsPrice[action.payload],
+            }
+        };
+
+        case REMOVE_INGREDIENT: {
+            for (let item of ingredients) {
+                if (item.type === action.payload) {
+                    if (item.amount <= 0) return state;
+                    item.amount--;
+                };
+            }
+            return {
+                ...state,
+                ingredients: ingredients,
+                totalPrice: state.totalPrice - ingredientsPrice[action.payload],
             }
         };
 
