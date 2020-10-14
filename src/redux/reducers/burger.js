@@ -1,4 +1,4 @@
-import { ADD_INGREDIENT, REMOVE_INGREDIENT, UPDATE_PURCHASABLE } from "../actions/types";
+import { ADD_INGREDIENT, REMOVE_INGREDIENT, RESET_INGREDIENT, UPDATE_PURCHASABLE } from "../actions/types";
 
 const ingredientsPrice = {
     salad: 20,
@@ -53,6 +53,20 @@ const reducers = (state = initialState, action) => {
                 purchaseable: sum > 0
             }
         };
+
+        case RESET_INGREDIENT: {
+            return {
+                ...state,
+                ingredients: [
+                    { type: 'salad', amount: 0 },
+                    { type: 'cheese', amount: 0 },
+                    { type: 'meat', amount: 0 },
+                ],
+                totalPrice: 80,
+                purchaseable: false 
+            }
+        };
+
 
         default:
             return state;
