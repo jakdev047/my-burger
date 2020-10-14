@@ -71,7 +71,7 @@ select:focus{color: #000 !important;}
 
 select{outline: none;}
 
-input{border: 1px solid transparent !important;}
+/* input{border: 1px solid transparent !important;} */
 
 [placeholder]:focus::-webkit-input-placeholder {
     -webkit-transition: opacity 0.3s 0.3s ease; 

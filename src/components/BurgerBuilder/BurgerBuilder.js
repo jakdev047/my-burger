@@ -31,7 +31,6 @@ class BurgerBuilder extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <Fragment>
                 <div className="container">
