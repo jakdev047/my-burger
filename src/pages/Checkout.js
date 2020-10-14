@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
 class Checkout extends Component {
     state = {
@@ -22,12 +24,21 @@ class Checkout extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        console.log(this.state.values)
+        const order = {
+            ingredients: this.props.ingredients,
+            customer: this.state.values,
+            price: this.props.totalPrice,
+            orderTime: new Date()
+        }
+        axios.post('https://burger-builder-b6eae.firebaseio.com/orders.json',order)
+            .then(response=>console.log(response))
+            .catch(err=>console.log(err))
     }
     render() {
         return (
-            <div className="container">
-                <form className="my-5">
+            <div className="container my-5">
+                <h3>Total Price: {this.props.totalPrice} BDT</h3>
+                <form className="my-3">
                     <div className="form-group">
                         <textarea
                             className="form-control"
@@ -71,4 +82,13 @@ class Checkout extends Component {
     }
 };
 
-export default Checkout;
+const mapStateToProps = state => {
+    return {
+        ingredients: state.burger.ingredients,
+        totalPrice: state.burger.totalPrice,
+        purchaseable: state.burger.purchaseable
+    }
+};
+
+
+export default connect(mapStateToProps)(Checkout);
