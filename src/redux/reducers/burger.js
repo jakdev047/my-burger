@@ -1,4 +1,4 @@
-import { ADD_INGREDIENT, LOAD_ORDERS, REMOVE_INGREDIENT, RESET_INGREDIENT, UPDATE_PURCHASABLE } from "../actions/types";
+import { ADD_INGREDIENT, LOAD_ORDERS, ORDER_LOAD_FAILED, REMOVE_INGREDIENT, RESET_INGREDIENT, UPDATE_PURCHASABLE } from "../actions/types";
 
 const ingredientsPrice = {
     salad: 20,
@@ -81,6 +81,14 @@ const reducers = (state = initialState, action) => {
             return {
                 ...state,
                 orders: orders,
+                orderLoading: false,
+            }
+        }
+
+        case ORDER_LOAD_FAILED: {
+            return {
+                ...state,
+                orderErr: true,
                 orderLoading: false,
             }
         }
