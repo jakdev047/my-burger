@@ -23,6 +23,7 @@ export const Navigation = () => {
                         <NavItem><NavLink exact  to="/orders">Orders</NavLink></NavItem>
                         <NavItem><NavLink exact  to="/checkout">Checkout</NavLink></NavItem>
                         <NavItem><NavLink exact  to="/about">About</NavLink></NavItem>
+                        <NavItem><NavLink exact  to="/login">Login</NavLink></NavItem>
                     </Nav>
                 </Collapse>
             </div>

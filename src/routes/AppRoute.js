@@ -10,6 +10,7 @@ import Footer from '../layer/Footer.js/Footer';
 import Orders from '../pages/Orders';
 import Checkout from '../pages/Checkout';
 import BurgerBuilder from '../components/BurgerBuilder/BurgerBuilder';
+import Auth from '../components/Auth/Auth';
 
 
 class AppRoute extends Component {
@@ -26,6 +27,7 @@ class AppRoute extends Component {
           <Route exact path='/about' component={About}/>
           <Route exact path='/orders' component={Orders}/>
           <Route exact path='/checkout' component={Checkout}/>
+          <Route exact path='/login' component={Auth}/>
           <Route path='*' component={NotFound}/>
         </Switch>
 
