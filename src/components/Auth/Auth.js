@@ -12,7 +12,7 @@ class Auth extends Component {
         },
         validationSchema: Yup.object({
             email: Yup.string().email('Invalid Email Formate').required('Email is required'),
-            password: Yup.string().required('Password is required'),
+            password: Yup.string().min(6,'Password Minimum 6 characters').required('Password is required'),
             confirmPassword: Yup.string().oneOf([Yup.ref('password'), ''], 'Password must match').required('Confirm Password is required'),
         })
     }
@@ -23,7 +23,13 @@ class Auth extends Component {
     }
     render() {
         return (
-            <div className="container my-5">
+            <div className="container my-5 col-4" style={{
+                border: "1px solid gray",
+                boxShadow: "1px 1px #888",
+                borderRadius: "5px",
+                padding: "20px",
+                marginBottom: "10px"
+            }}>
                 <Formik
                     initialValues={this.state.initialValues}
                     validationSchema={this.state.validationSchema}
