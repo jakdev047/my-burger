@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Navigation } from '../../components/Navigation/Navigation';
+import Navigation  from '../../components/Navigation/Navigation';
 
 const Header = () => {
     return (
