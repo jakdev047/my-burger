@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Form, Formik } from 'formik';
 import FormikControls from '../FormikControl/FormikControls';
 import * as Yup from 'yup';
+import { auth } from '../../redux/actions/auth';
+import { connect } from 'react-redux';
 
 class Auth extends Component {
     state = {
@@ -20,6 +22,7 @@ class Auth extends Component {
     onSubmit = (values, onSubmitProps) => {
         onSubmitProps.setSubmitting(false);
         onSubmitProps.resetForm();
+        this.props.auth(values.email,values.password,this.state.mode);
         console.log(JSON.parse(JSON.stringify(values)));
     }
     switchModeHandler = () => {
@@ -87,4 +90,10 @@ class Auth extends Component {
     }
 };
 
-export default Auth;
+const mapDispatchToProps = dispatch => {
+    return {
+        auth: (email,password,mode) => dispatch(auth(email,password,mode))
+    }
+}
+
+export default connect(null,mapDispatchToProps)(Auth);
