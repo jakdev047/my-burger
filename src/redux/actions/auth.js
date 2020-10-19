@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_LOADING, AUTH_LOGOUT, AUTH_SUCCESS } from './types';
+import { AUTH_FAILED, AUTH_LOADING, AUTH_LOGOUT, AUTH_SUCCESS } from './types';
 
 export const authSuccess = (token, userId) => {
     return {
@@ -15,6 +15,13 @@ export const authLoading = isLoading => {
     return {
         type: AUTH_LOADING,
         payload: isLoading
+    }
+}
+
+export const authFailed = errMsg => {
+    return {
+        type: AUTH_FAILED,
+        payload: errMsg
     }
 }
 
@@ -48,7 +55,7 @@ export const auth = (email, password, mode) => dispatch => {
         })
         .catch(err=>{
             dispatch(authLoading(false));
-            console.log(err);
+            dispatch(authFailed(err.response.data.error.message));
         })
 };
 

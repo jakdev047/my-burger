@@ -4,7 +4,7 @@ import FormikControls from '../FormikControl/FormikControls';
 import * as Yup from 'yup';
 import { auth } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
-import { Spinner } from 'reactstrap';
+import { Alert, Spinner } from 'reactstrap';
 
 class Auth extends Component {
     state = {
@@ -32,6 +32,10 @@ class Auth extends Component {
         })
     }
     render() {
+        let err = null;
+        if (this.props.authFailedMsg !== null) {
+            err = <Alert color="danger">{this.props.authFailedMsg}</Alert>
+        }
         let form = null;
         if (this.props.authLoading) {
             form = <Spinner />
@@ -94,6 +98,7 @@ class Auth extends Component {
                 padding: "20px",
                 marginBottom: "10px"
             }}>
+                {err}
                 {form}
             </div>
         )
