@@ -37,6 +37,7 @@ class Navigation extends Component {
                     <NavItem><NavLink exact to="/orders">Orders</NavLink></NavItem>
                     <NavItem><NavLink exact to="/checkout">Checkout</NavLink></NavItem>
                     <NavItem><NavLink exact to="/about">About</NavLink></NavItem>
+                    <NavItem><NavLink exact to="/logout">Logout</NavLink></NavItem>
                 </Nav>
             )
         }

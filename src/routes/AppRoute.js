@@ -12,6 +12,7 @@ import Checkout from '../pages/Checkout';
 import BurgerBuilder from '../components/BurgerBuilder/BurgerBuilder';
 import Auth from '../components/Auth/Auth';
 import { connect } from 'react-redux';
+import Logout from '../components/Auth/Logout';
 
 
 class AppRoute extends Component {
@@ -35,6 +36,7 @@ class AppRoute extends Component {
           <Route exact path='/about' component={About} />
           <Route exact path='/orders' component={Orders} />
           <Route exact path='/checkout' component={Checkout} />
+          <Route exact path='/logout' component={Logout} />
           <Redirect to="/"/>
           <Route path='*' component={NotFound} />
         </Switch>

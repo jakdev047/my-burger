@@ -1,4 +1,4 @@
-import { AUTH_SUCCESS } from "../actions/types";
+import { AUTH_LOGOUT, AUTH_SUCCESS } from "../actions/types";
 
 const initialState = {
     token: null,
@@ -14,6 +14,13 @@ const reducers = (state = initialState, action) => {
                 userId: action.payload.userId
             }
         };
+        case AUTH_LOGOUT: {
+            return {
+                ...state,
+                token: null,
+                userId: null
+            }
+        }
         default:
             return state;
     };
