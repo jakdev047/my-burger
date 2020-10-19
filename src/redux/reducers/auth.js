@@ -1,8 +1,10 @@
-import { AUTH_LOGOUT, AUTH_SUCCESS } from "../actions/types";
+import { AUTH_LOADING, AUTH_LOGOUT, AUTH_SUCCESS } from "../actions/types";
 
 const initialState = {
     token: null,
-    userId: null
+    userId: null,
+    authLoading: false,
+    authFailedMsg: null
 };
 
 const reducers = (state = initialState, action) => {
@@ -20,7 +22,13 @@ const reducers = (state = initialState, action) => {
                 token: null,
                 userId: null
             }
-        }
+        };
+        case AUTH_LOADING:{
+            return {
+                ...state,
+                authLoading: action.payload
+            }
+        };
         default:
             return state;
     };

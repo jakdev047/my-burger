@@ -4,6 +4,7 @@ import FormikControls from '../FormikControl/FormikControls';
 import * as Yup from 'yup';
 import { auth } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
+import { Spinner } from 'reactstrap';
 
 class Auth extends Component {
     state = {
@@ -22,7 +23,7 @@ class Auth extends Component {
     onSubmit = (values, onSubmitProps) => {
         onSubmitProps.setSubmitting(false);
         onSubmitProps.resetForm();
-        this.props.auth(values.email,values.password,this.state.mode);
+        this.props.auth(values.email, values.password, this.state.mode);
         console.log(JSON.parse(JSON.stringify(values)));
     }
     switchModeHandler = () => {
@@ -31,19 +32,17 @@ class Auth extends Component {
         })
     }
     render() {
-        return (
-            <div className="container my-5 col-4" style={{
-                border: "1px solid gray",
-                boxShadow: "1px 1px #888",
-                borderRadius: "5px",
-                padding: "20px",
-                marginBottom: "10px"
-            }}>
+        let form = null;
+        if (this.props.authLoading) {
+            form = <Spinner />
+        }
+        else {
+            form = (
                 <Formik
                     initialValues={this.state.initialValues}
                     validationSchema={
-                       this.state.validationSchema
-                        
+                        this.state.validationSchema
+
                     }
                     onSubmit={this.onSubmit}
                     enableReinitialize={true}
@@ -69,9 +68,9 @@ class Auth extends Component {
                                         </div>
                                         {
                                             this.state.mode === "Sign Up" ?
-                                            <div className="form-group">
-                                                <FormikControls control="input" type="password" name="confirmPassword" label="Confirm Password * : " />
-                                            </div> : null
+                                                <div className="form-group">
+                                                    <FormikControls control="input" type="password" name="confirmPassword" label="Confirm Password * : " />
+                                                </div> : null
                                         }
 
                                         <div className="form-group">
@@ -85,6 +84,17 @@ class Auth extends Component {
                         }
                     }
                 </Formik>
+            )
+        }
+        return (
+            <div className="container my-5 col-4" style={{
+                border: "1px solid gray",
+                boxShadow: "1px 1px #888",
+                borderRadius: "5px",
+                padding: "20px",
+                marginBottom: "10px"
+            }}>
+                {form}
             </div>
         )
     }
@@ -92,8 +102,15 @@ class Auth extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        auth: (email,password,mode) => dispatch(auth(email,password,mode))
+        auth: (email, password, mode) => dispatch(auth(email, password, mode))
     }
 }
 
-export default connect(null,mapDispatchToProps)(Auth);
+const mapStateToProps = state => {
+    return {
+        authLoading: state.auth.authLoading,
+        authFailedMsg: state.auth.authFailedMsg
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
