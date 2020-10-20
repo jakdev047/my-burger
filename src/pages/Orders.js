@@ -6,7 +6,7 @@ import { fetchOrders } from '../redux/actions/burger';
 
 class Orders extends Component {
     componentDidMount() {
-        this.props.fetchOrders();
+        this.props.fetchOrders(this.props.token,this.props.userId);
     }
     render(){
         let orders = null;
@@ -35,13 +35,15 @@ const mapStateToProps = state => {
     return {
         orders: state.burger.orders,
         orderLoading: state.burger.orderLoading,
-        orderErr: state.burger.orderErr
+        orderErr: state.burger.orderErr,
+        token: state.auth.token,
+        userId: state.auth.userId
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchOrders: () => dispatch(fetchOrders())
+        fetchOrders: (token,userId) => dispatch(fetchOrders(token,userId))
     }
 }
 

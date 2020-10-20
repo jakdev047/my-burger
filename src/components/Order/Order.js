@@ -27,7 +27,7 @@ const Order = ({ order }) => {
             marginBottom: "10px"
         }}>
             <p>Order Name: {order.id} </p>
-            <p>Delivery Address: {order.customer.deliveryAddress} </p>
+            <p>Delivery Address: {order.customer.deliveryAdress} </p>
             <hr />
             {ingredientSummary}
             <hr />
